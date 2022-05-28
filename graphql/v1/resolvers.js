@@ -5,4 +5,4 @@ export const resolvers = {
       return "hello world!!"
     },
   },
-};
+}

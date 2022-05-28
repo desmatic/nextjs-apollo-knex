@@ -10,12 +10,16 @@
   },
   "dependencies": {
     "apollo-server-micro": "^3.7.0",
+    "datasource-sql": "^2.0.1",
     "graphql": "^16.5.0",
     "knex": "^2.0.0",
+    "knex-serverless-mysql": "^1.1.0",
     "micro-cors": "^0.1.1",
+    "mysql2": "^2.3.3",
     "next": "12.1.6",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "serverless-mysql": "^1.5.4"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
