@@ -13,6 +13,11 @@ const startApolloServer = apolloServer.start()
 
 export default Cors()(
   async function handler(req, res) {
+    if (req.method === 'OPTIONS') {
+      res.end();
+      return false;
+    }
+
     await startApolloServer
     await apolloServer.createHandler({ path: url })(req, res)
   }
