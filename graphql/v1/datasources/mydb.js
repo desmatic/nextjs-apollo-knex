@@ -3,15 +3,15 @@ import { SQLDataSource } from 'datasource-sql'
 export const MyDBConfig = {
     client: 'mysql2',
     connection: {
-        host: '127.0.0.1',
-        port: 3306,
-        user: 'desjones',
-        password: 'foobar123',
-        database: 'des'
+        host     : process.env.DB_HOST     || '127.0.0.1',
+        port     : process.env.DB_PORT     || 3306,
+        database : process.env.DB_DATABASE || 'test',
+        user     : process.env.DB_USERNAME || 'root',
+        password : process.env.DB_PASSWORD || '',
     }
 }
 
-export const CACHETTL = 60;
+export const CACHETTL = 60
 
 class MyDB extends SQLDataSource {
     getMessages() {
