@@ -1,25 +1,30 @@
 import { ApolloServer } from 'apollo-server-micro'
-import { typeDefs } from '../../../graphql/v1/schema'
-import { resolvers } from '../../../graphql/v1/resolvers'
 import Cors from 'micro-cors'
-
-const url = "/api/v1/graphql"
+import knex from 'knex'
+import { typeDefs, urlGraphQL } from '../../../graphql/v1/schema'
+import { resolvers } from '../../../graphql/v1/resolvers'
+import MyDB, { MyDBConfig } from '../../../graphql/v1/datasources/mydb'
 
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
+  dataSources: () => { 
+    return {
+      mydb: new MyDB(MyDBConfig),
+    }
+  }
 })
 const startApolloServer = apolloServer.start()
 
 export default Cors()(
   async function handler(req, res) {
     if (req.method === 'OPTIONS') {
-      res.end();
-      return false;
+      res.end()
+      return false
     }
 
     await startApolloServer
-    await apolloServer.createHandler({ path: url })(req, res)
+    await apolloServer.createHandler({ path: urlGraphQL })(req, res)
   }
 )
 
