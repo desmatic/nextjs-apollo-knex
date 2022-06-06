@@ -7,6 +7,7 @@ export const typeDefs = gql`
       id: ID
       message: String
   }
+
   type Query {
       hello: String!
       messages: [Message]

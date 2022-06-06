@@ -2,14 +2,14 @@ import { ApolloServer } from 'apollo-server-micro'
 import Cors from 'micro-cors'
 import { typeDefs, urlGraphQL } from '../../../graphql/v1/schema'
 import { resolvers } from '../../../graphql/v1/resolvers'
-import MyDB, { MyDBConfig } from '../../../graphql/v1/datasources/mydb'
+import MyDB, { myDBConfig } from '../../../graphql/v1/datasources/mydb'
 
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => { 
     return {
-      mydb: new MyDB(MyDBConfig),
+      mydb: new MyDB(myDBConfig),
     }
   }
 })

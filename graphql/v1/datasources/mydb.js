@@ -1,6 +1,6 @@
 import { SQLDataSource } from 'datasource-sql'
 
-export const MyDBConfig = {
+export const myDBConfig = {
     client: 'mysql2',
     connection: {
         host     : process.env.DB_HOST     || '127.0.0.1',
