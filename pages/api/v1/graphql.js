@@ -1,6 +1,5 @@
 import { ApolloServer } from 'apollo-server-micro'
 import Cors from 'micro-cors'
-import knex from 'knex'
 import { typeDefs, urlGraphQL } from '../../../graphql/v1/schema'
 import { resolvers } from '../../../graphql/v1/resolvers'
 import MyDB, { MyDBConfig } from '../../../graphql/v1/datasources/mydb'
