@@ -1,5 +1,5 @@
 import { ApolloServer } from 'apollo-server-micro'
-import Cors from 'micro-cors'
+import cors from 'micro-cors'
 import { typeDefs, urlGraphQL } from '../../../graphql/v1/schema'
 import { resolvers } from '../../../graphql/v1/resolvers'
 import MyDB, { myDBConfig } from '../../../graphql/v1/datasources/mydb'
@@ -7,7 +7,7 @@ import MyDB, { myDBConfig } from '../../../graphql/v1/datasources/mydb'
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
-  dataSources: () => { 
+  dataSources: () => {
     return {
       mydb: new MyDB(myDBConfig),
     }
@@ -15,7 +15,7 @@ const apolloServer = new ApolloServer({
 })
 const startApolloServer = apolloServer.start()
 
-export default Cors()(
+export default cors()(
   async function handler(req, res) {
     if (req.method === 'OPTIONS') {
       res.end()
